@@ -69,7 +69,9 @@ module.exports = {
 
           let gitAuthorContent = `<div class="git-author-container git-author-${position}">`
 
-          if (modifyTpl) {
+          const hasModified = lastCommit.timeStamp !== firstCommit.timeStamp;
+          
+          if (modifyTpl && hasModified) {
             const modifyMsg = substitute(modifyTpl, lastCommit)
             gitAuthorContent += `<div class="modified">${modifyMsg}</div>`
           }
